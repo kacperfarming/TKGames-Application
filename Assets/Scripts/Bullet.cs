@@ -4,11 +4,24 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     int bouncesLeft = 2;
+    [HideInInspector]
+    public float forceConstraint;
+    [SerializeField]
+    float pullForce = 2f;
     Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 vectorToGravityWell = PlayerGravityManipulation.Instance.gravityWell.transform.position - transform.position;
+        if (vectorToGravityWell.magnitude <= 2f && rb.linearVelocity.magnitude < forceConstraint && PlayerGravityManipulation.Instance.gravityFieldActive)
+        {
+            rb.AddForce(vectorToGravityWell.normalized * pullForce);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

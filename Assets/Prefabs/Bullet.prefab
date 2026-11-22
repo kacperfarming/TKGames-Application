@@ -170,7 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dd7c48a8b5b164e954a09004c1ab3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  direction: {x: 0, y: 0}
+  forceConstraint: 0
+  pullForce: 10
 --- !u!114 &5635874797179106681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +185,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectProperties
   doesNotDestroyBullets: 1
+  score: 0

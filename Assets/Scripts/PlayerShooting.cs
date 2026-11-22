@@ -23,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce((bullet.transform.position - transform.position).normalized * fireForce);
+            bullet.GetComponent<Bullet>().forceConstraint = fireForce*Mathf.Sqrt(2);
         }
     }
 }
